@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="userRecord">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Halo Go Coding Test Page</title>
+    <script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+	<script src="js/app/app.js"></script>
+	<script src="js/app/UserRecordController.js"></script>
+	<script src="js/app/UserRecordService.js"></script>
+	<script src="js/app/ShowUserRecordController.js"></script>
+	<script src="js/app/ShowUserRecordService.js"></script>
+	<link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/app/app.css"/>
+</head>
+<body>
+	<hr/>
+	  <div class="container" ng-controller="UserRecordController">
+		<div class="row">
+			 <div><h1>Add User Record</h1>
+			</div>
+		</div>
+		<div class="row">
+			<h3>{{message}}</h3>
+		</div>
+		<div class="row">
+		  <form id="userForm" name="userForm">   
+		        		
+		        <label class="spacing">User Name</label> <input type="text" ng-model="userRecord.name" name="userRecord.name" class="input-sm spacing" required/>
+		        <br/>
+		        <label class="spacing">Number</label> <input type="text" ng-model="userRecord.numberValue" name="userRecord.numberValue" class="input-sm custom-width spacing" required/>
+				<br/>
+		        <input type="submit" ng-click="saveUserDetails(userRecord)" id="submit" value="Save User" ng-disabled="userForm.$invalid || userForm.$pristine"/>
+		        <input type="reset" ng-click="reset()" id="reset" value="Reset Data"/>
+		        
+		  </form>
+		   </div>
+	 </div>
+	
+	 <div class="row">
+	  <br/> <br/> <br/> <br/>
+	 </div>
+ 	
+	 <div ng-if="checkUser" class="spacing-left container" ng-controller="ShowUserRecordController">
+	 
+	  <div class="row">
+	  	<h1>Show User Record</h1>
+	  	</div>
+	  	 <div class="row">
+		 <h3>{{message}}</h3>
+		 </div>
+	  <div class="row">
+	        <label class="spacing">User Name</label> <span class="spacing">{{userDto.name}}</span>
+	        <br/>
+	        <label class="spacing">Number</label> <span class="spacing">{{userDto.engRepresentation}}</span>
+	    </div>
+	 </div>
+  	
+</body>
+</html>
